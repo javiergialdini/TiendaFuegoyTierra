@@ -1,0 +1,15 @@
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.category-list li {
+    margin: 0 10px;
+}
+
+.button-radius {
+    border-radius:0px;
+}
