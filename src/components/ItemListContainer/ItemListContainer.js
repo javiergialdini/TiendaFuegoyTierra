@@ -1,9 +1,9 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
-export const ItemListContainer = ({ItemListGroup}) => {
+export const ItemListContainer = ({greeting}) => {
     return (
         <Container>
-                <h3>{ItemListGroup}</h3>
+                <h3>{greeting}</h3>
                 <>
                     <ListGroup variant="flush">
                         <ListGroup.Item>Producto 1</ListGroup.Item>
