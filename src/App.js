@@ -1,20 +1,35 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import  { navbar as NavBar } from './components/navbar/NavBar.js'
-import { Categories } from './components/Categories/Categories.js'
+import  { NavBar } from './components/navbar/NavBar.js'
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer.js'
+import { PruebaAsync } from './components/EjerciciosClase/Clase06'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { PokeApi } from './components/PokeApi/PokeApi';
+import './components/PokeApi/PokeApi.css'
+import { PrimarySearchAppBar } from './components/PruebaMuiComponent/PruebaMuiComponent'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <Router>
+    <ThemeProvider theme={darkTheme}>
+      <div className="App">
+        <Router>
         <NavBar/>
-        <Categories/>
-        <ItemListContainer ItemListGroup="Item List Group"/>
-      </Router>
-    </div>
+          {/*<ItemListContainer ItemListGroup="Item List Group"/>*/}
+          <div>
+            <PokeApi/>
+          </div>
+        </Router>
+      </div>
+    </ThemeProvider>
   );
 }
 
