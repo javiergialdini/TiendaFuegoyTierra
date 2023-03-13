@@ -1,15 +1,17 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Switch, Route, Navigate} from 'react-router-dom';
 import  { NavBar } from './components/navbar/NavBar.js'
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer.js'
-import { PruebaAsync } from './components/EjerciciosClase/Clase06'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import { PokeApi } from './components/PokeApi/PokeApi';
+//import { PokeApi } from './components/PokeApi/PokeApi';
 import './components/PokeApi/PokeApi.css'
 import { PrimarySearchAppBar } from './components/PruebaMuiComponent/PruebaMuiComponent'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { Nosotros } from './components/Nosotros/Nosotros'
+import { Contacto } from './components/Contacto/Contacto'
+import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer'
 
 const darkTheme = createTheme({
   palette: {
@@ -19,17 +21,23 @@ const darkTheme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <div className="App">
-        <Router>
-        <NavBar/>
-          {/*<ItemListContainer ItemListGroup="Item List Group"/>*/}
-          <div>
-            <PokeApi/>
-          </div>
-        </Router>
-      </div>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={darkTheme}>
+        <div className="App">
+          <NavBar/>
+          <Routes>
+            <Route path="/" element={ <ItemListContainer ItemListGroup="Item List Group"/> }/>
+            <Route path="/productos/:categoryId" element={<ItemListContainer/>}/>
+            <Route path="/nosotros" element={<Nosotros/>}/>
+            <Route path="/contacto" element={<Contacto/>}/>
+            {/* <Route path="/pokeapi" element={<PokeApi/>}/> */}
+            <Route path="*" element={<Navigate to="/"/>}/>
+            <Route path="/detail/:productoId" element={<ItemDetailContainer/>}/>
+            {/* <Route path="*" element={<Error404 />}/> */}
+          </Routes>
+        </div>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

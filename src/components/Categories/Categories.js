@@ -1,14 +1,17 @@
-import Button from 'react-bootstrap/Button';
-import './Categories.css'
+import * as React from 'react';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom'
+
 export const Categories = () => {
-    return (
-        <div>
-            <ul className="category-list">
-                <li><Button className="button-radius" variant="outline-dark">Categoria 1</Button></li>
-                <li><Button className="button-radius" variant="outline-dark">Categoria 2</Button></li>
-                <li><Button className="button-radius" variant="outline-dark">Categoria 3</Button></li>
-                <li><Button className="button-radius" variant="outline-dark">Categoria 4</Button></li>
-            </ul>
-        </div>
-    );
-  };
+
+return (
+    <div>
+        <Tab value="Anillos" label="Anillos" component={Link} to="/productos/Anillos"/>
+        <Tab value="Aros" label="Aros" component={Link} to="/productos/Aros"/>
+        <Tab value="Collares" label="Collares" component={Link} to="/productos/Collares"/>
+        <Tab value="Todos" label="Todos" component={Link} to="/"/>
+    </div>
+);
+}
