@@ -6,9 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 //import { PokeApi } from './components/PokeApi/PokeApi';
 import './components/PokeApi/PokeApi.css'
-import { PrimarySearchAppBar } from './components/PruebaMuiComponent/PruebaMuiComponent'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import { Nosotros } from './components/Nosotros/Nosotros'
 import { Contacto } from './components/Contacto/Contacto'
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer'
