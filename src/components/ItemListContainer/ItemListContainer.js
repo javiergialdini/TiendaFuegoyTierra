@@ -35,7 +35,7 @@ export const ItemListContainer = ({greeting}) => {
         <div>
             {
                 loading
-                    ? <h2>Cargando...</h2>
+                    ? <h2 style={{ paddingTop: '100px'}}>Cargando...</h2>
                     : <ItemList items={productos}/>
             }
         </div>
