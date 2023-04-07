@@ -3,148 +3,162 @@
 		"id": 1,
 		"name": "Anillo con Cuarzo Ahumado",
 		"descriptions": [
-			{"description":"Talle 11"},
-			{"description":"Elaborado en acero inoxidable y alpaca"}
+			"Talle 11",
+			"Elaborado en acero inoxidable y alpaca"
 		],
 		"price": 3500,
 		"img": "https://via.placeholder.com/220",
-		"category": "Anillos"
+		"category": "Anillos",
+		"stock": 1
 	},
 	{
 		"id": 2,
 		"name": "Anillo de Ágata",
 		"descriptions": [
-			{"description":"Talle 5"}
+			"Talle 5"
 		],
 		"price": 2500,
 		"img": "https://via.placeholder.com/220",
-		"category": "Anillos"
+		"category": "Anillos",
+		"stock": 1
 	},
 	{
 		"id": 3,
 		"name": "Anillo Reversible con Labradorita y Ágata",
 		"descriptions": [
-			{"description":"Talle 7"},
-			{"description":"Elaborado en acero inoxidable"}
+			"Talle 7",
+			"Elaborado en acero inoxidable"
 		],
 		"price": 3000,
 		"img": "https://via.placeholder.com/220",
-		"category": "Anillos"
+		"category": "Anillos",
+		"stock": 1
 	},
 	{
 		"id": 4,
 		"name": "Anillo Reversible de Ámbar y Ágata",
 		"descriptions": [
-			{"description":"Talle 6"},
-			{"description":"Elaborado en acero inoxidable"}
+			"Talle 6",
+			"Elaborado en acero inoxidable"
 		],
 		"price": 2500,
 		"img": "https://via.placeholder.com/220",
-		"category": "Anillos"
+		"category": "Anillos",
+		"stock": 1
 	},
 	{
 		"id": 5,
 		"name": "Anillo con Zirconia",
 		"descriptions": [
-			{"description":"Talle 7"}
+			"Talle 7"
 		],
 		"price": 2500,
 		"img": "https://via.placeholder.com/220",
-		"category": "Anillos"
+		"category": "Anillos",
+		"stock": 1
 	},
 	{
 		"id": 6,
 		"name": "Peso para Expansor con Cuarzo Ahumado",
 		"descriptions": [
-			{"description":"Peso para expansor a partir de 3mm"},
-			{"description":"Elaborado con un cuarzo ahumado montado en alpaca y latón"}
+			"Peso para expansor a partir de 3mm",
+			"Elaborado con un cuarzo ahumado montado en alpaca y latón"
 		],
 		"price": 4500,
 		"img": "https://via.placeholder.com/220",
-		"category": "Aros"
+		"category": "Aros",
+		"stock": 10
 	},
 	{
 		"id": 7,
 		"name": "Aros de Serpientes",
 		"descriptions": [
-			{"description":"Hechos en latón"}
+			"Hechos en latón"
 		],
 		"price": 3000,
 		"img": "https://via.placeholder.com/220",
-		"category": "Aros"
+		"category": "Aros",
+		"stock": 5
 	},
 	{
 		"id": 8,
 		"name": "Aros Coral Fosil",
 		"descriptions": [
-			{"description":"Par de aros elegantes elaborados con unos corales fósiles en alpaca, cobre y los ganchos de acero inoxidable"}
+			"Par de aros elegantes elaborados con unos corales fósiles en alpaca, cobre y los ganchos de acero inoxidable"
 		],
 		"price": 5000,
 		"img": "https://via.placeholder.com/220",
-		"category": "Aros"
+		"category": "Aros",
+		"stock": 4
 	},
 	{
 		"id": 9,
 		"name": "Collar de Labradorita con Jaspe Rojo",
 		"descriptions": [
-			{"description":"Dije biomecánico"},
-			{"description":"Elaborado en alpaca y bronce"}
+			"Dije biomecánico",
+			"Elaborado en alpaca y bronce"
 		],
 		"price": 5000,
 		"img": "https://via.placeholder.com/220",
-		"category": "Collares"
+		"category": "Collares",
+		"stock": 1
 	},
 	{
 		"id": 10,
 		"name": "Collar de Obsidiana con Ámbar",
 		"descriptions": [
-			{"description":"Diseño clásico y elegante"},
-			{"description":"Elaborado en latón, alpaca y cobre"}
+			"Diseño clásico y elegante",
+			"Elaborado en latón, alpaca y cobre"
 		],
 		"price": 4500,
 		"img": "https://via.placeholder.com/220",
-		"category": "Collares"
+		"category": "Collares",
+		"stock": 1
 	},
 	{
 		"id": 11,
 		"name": "Collar de Labradorita y Ágata",
 		"descriptions": [
-			{"description":"Dije hecho en bronce y tumbaga con una increíble labradorita y dos cuentas de ágata"}
+			"Dije hecho en bronce y tumbaga con una increíble labradorita y dos cuentas de ágata"
 		],
 		"price": 4000,
 		"img": "https://via.placeholder.com/220",
-		"category": "Collares"
+		"category": "Collares",
+		"stock": 1
 	},
 	{
 		"id": 12,
 		"name": "Collar de Labradorita Azul y Diópsido",
 		"descriptions": [
-			{"description":"Dije biomecánico"},
-			{"description":"Elaborado en alpaca y latón"}
+			"Dije biomecánico",
+			"Elaborado en alpaca y latón"
 		],
 		"price": 5000,
 		"img": "https://via.placeholder.com/220",
-		"category": "Collares"
+		"category": "Collares",
+		"stock": 1
 	},
 	{
 		"id": 13,
 		"name": "Collar de Jade Azul y Cuarzo Cristal",
 		"descriptions": [
-			{"description":"Collar con jade azul de Guatemala y un cuarzo cristal engarzado en latón y acero inoxidable"}
+			"Collar con jade azul de Guatemala y un cuarzo cristal engarzado en latón y acero inoxidable"
 		],
 		"price": 4000,
 		"img": "https://via.placeholder.com/220",
-		"category": "Collares"
+		"category": "Collares",
+		"stock": 1
 	},
 	{
 		"id": 14,
 		"name": "Collar de Labradorita con Amatista",
 		"descriptions": [
-			{"description":"Dije biomecánico"},
-			{"description":"Hecho en alpaca y bronce"}
+			"Dije biomecánico",
+			"Hecho en alpaca y bronce"
 		],
 		"price": 5000,
 		"img": "https://via.placeholder.com/220",
-		"category": "Collares"
+		"category": "Collares",
+		"stock": 1
 	}
 ]

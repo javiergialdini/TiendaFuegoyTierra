@@ -12,8 +12,14 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext';
+import { LoginContext } from '../../context/LoginContext'
 
 export const NavBar = () => {
+    const { user, logOut } = useContext(LoginContext)
+    const { totalCantidad } = useContext(CartContext)
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -40,6 +46,7 @@ export const NavBar = () => {
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
         <Menu
+        PaperProps={{ style: { backgroundColor: '#333232', color: 'white'} }}
         anchorEl={anchorEl}
         anchorOrigin={{
             vertical: 'top',
@@ -54,14 +61,15 @@ export const NavBar = () => {
         open={isMenuOpen}
         onClose={handleMenuClose}
         >
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={handleMenuClose}>{user.email}</MenuItem>
+        <MenuItem onClick={logOut}>Cerrar sesión</MenuItem>
         </Menu>
     );
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
     const renderMobileMenu = (
     <Menu
+        PaperProps={{ style: { backgroundColor: '#333232', color: 'white'} }}
         anchorEl={mobileMoreAnchorEl}
         anchorOrigin={{
             vertical: 'top',
@@ -76,14 +84,21 @@ export const NavBar = () => {
         open={isMobileMenuOpen}
         onClose={handleMobileMenuClose}
     >
-        <MenuItem>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={4} color="error">
-                <AddShoppingCartIcon />
-            </Badge>
-            </IconButton>
-            <p>Carrito</p>
-        </MenuItem>
+        <Link
+            to="/cart"
+            style={{
+                color: 'inherit',
+                textDecoration: 'none'
+            }}>
+            <MenuItem>
+                    <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                        <Badge badgeContent={totalCantidad()} color="error">
+                            <AddShoppingCartIcon />
+                        </Badge>
+                    </IconButton>
+                <p>Carrito</p>
+            </MenuItem>
+        </Link>
         <MenuItem onClick={handleProfileMenuOpen}>
             <IconButton
             size="large"
@@ -100,8 +115,8 @@ export const NavBar = () => {
     );
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="fixed" color="primary">
+        <Box sx={{ flexGrow: 1, }}>
+            <AppBar position="fixed" color="primary" style={{backgroundColor:'#333232'}}>
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -110,7 +125,7 @@ export const NavBar = () => {
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
                     >
-                    <MenuIcon />
+                        <MenuIcon />
                     </IconButton>
                     <Link to="/"
                         style={{
@@ -121,12 +136,13 @@ export const NavBar = () => {
                             display: { xs: 'flex', md: 'flex' }}}>
                         <Typography
                             noWrap
-                            component="a"
+                            component="div"
                             sx={{
                                 mr: 2,
                                 display: { xs: 'flex', md: 'flex' },
                                 color: 'inherit',
                                 textDecoration: 'none',
+                                ":hover":{color: 'grey'},
                             }}>
                             Fuego y Tierra
                         </Typography>
@@ -140,12 +156,13 @@ export const NavBar = () => {
                             display: { xs: 'flex', md: 'flex' }}}>
                         <Typography
                             noWrap
-                            component="a"
+                            component="div"
                             sx={{
                                 mr: 2,
                                 display: { xs: 'flex', md: 'flex' },
                                 color: 'inherit',
                                 textDecoration: 'none',
+                                ":hover":{color: 'grey'},
                             }}>
                             Nosotros
                         </Typography>
@@ -159,41 +176,55 @@ export const NavBar = () => {
                             display: { xs: 'flex', md: 'flex' }}}>
                         <Typography
                             noWrap
-                            component="a"
+                            component="div"
                             sx={{
                                 mr: 2,
                                 display: { xs: 'flex', md: 'flex' },
                                 color: 'inherit',
                                 textDecoration: 'none',
+                                ":hover":{color: 'grey'},
                             }}>
                             Contacto
                         </Typography>
                     </Link>
-                    <Link to="/pokeapi"
-                        style={{
-                            textDecoration: 'none',
-                            variant:'h7',
-                            color: 'inherit',
-                            mr: 2,
-                            display: { xs: 'flex', md: 'flex' }}}>
-                        {/* <Typography
-                            noWrap
-                            component="a"
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'flex', md: 'flex' },
-                                color: 'inherit',
+                    {
+                        user.adminAcces === true
+                        ?
+                        <Link to="/AltaProducto"
+                            style={{
                                 textDecoration: 'none',
-                            }}>
-                            PokeApi
-                        </Typography> */}
-                    </Link>
+                                variant:'h7',
+                                color: 'inherit',
+                                mr: 2,
+                                display: { xs: 'flex', md: 'flex' }}}>
+                            <Typography
+                                noWrap
+                                component="div"
+                                sx={{
+                                    mr: 2,
+                                    display: { xs: 'flex', md: 'flex' },
+                                    color: 'inherit',
+                                    textDecoration: 'none',
+                                    ":hover":{color: 'grey'},
+                                }}>
+                                Alta producto
+                            </Typography>
+                        </Link>
+                        :
+                        <></>
+                    }
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="error">
-                                <AddShoppingCartIcon />
-                            </Badge>
+                            <Link
+                                    to="/cart"
+                                    style={{
+                                        color: 'inherit',
+                                    }}>
+                                <Badge badgeContent={totalCantidad()} color="error">
+                                    <AddShoppingCartIcon />
+                                </Badge>
+                            </Link>
                         </IconButton>
                         <IconButton
                         size="large"

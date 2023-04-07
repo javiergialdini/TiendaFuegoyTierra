@@ -1,7 +1,8 @@
 import { useState, useEffect} from 'react';
-import { pedirProductoPorId } from '../../helpers/pedirDatos';
 import { ItemDetail } from '../ItemDetail/ItemDetail';
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore'
+import { db } from '../../firebase/config'
 
 export const ItemDetailContainer = () => {
     const [item, setItem] = useState(null)
@@ -12,16 +13,17 @@ export const ItemDetailContainer = () => {
     useEffect (() => {
         setLoading(true)
 
-        pedirProductoPorId(Number(productoId))
-            .then((resp) => {
-                setItem(resp)
+        // 1 - referecia (sync)
+        const docRef = doc(db, 'productos', productoId)
+        // 2 - llamado async
+        getDoc(docRef)
+            .then((doc) => {
+                setItem({id: doc.id, ...doc.data()})
             })
             .finally(() => {
                 setLoading(false)
             })
     },[])
-
-    console.log("entra")
 
     return (
         <div>
