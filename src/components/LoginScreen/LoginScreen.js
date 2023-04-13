@@ -3,11 +3,12 @@ import  { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
-import { useState, useContext } from 'react'
+import { useState, useContext } from 'react';
 import { LoginContext } from '../../context/LoginContext';
+import { Link } from 'react-router-dom';
 
 export const LoginScreen = () => {
-    const { user, tryLogin } = useContext(LoginContext)
+    const { login } = useContext(LoginContext)
 
     const [values, setValues] = useState({
         email: '',
@@ -16,7 +17,7 @@ export const LoginScreen = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        tryLogin(values)
+        login(values)
     }
 
     const handleOnChange = (e) => {
@@ -29,7 +30,7 @@ export const LoginScreen = () => {
     return (
         <div
         style={{ marginTop:'100px',
-                height:'600px',
+                height:'650px',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -58,7 +59,8 @@ export const LoginScreen = () => {
                                 style={{marginBottom:'20px', display: 'block' }}
                                 value={values.password} name="password" fullWidth id="password" label="password"
                                 variant="outlined" color='grey' onChange={handleOnChange} type='password'/>
-                            <Button type='submit' color='inherit' variant='outlined'>INGRESAR</Button>
+                            <Button style={{marginBottom:'10px'}} type='submit' color='inherit' variant='outlined'>INGRESAR</Button>
+                            <Link to="/register">No tengo cuenta, registrarme</Link>
                         </FormControl>
                     </form>
                 </div>

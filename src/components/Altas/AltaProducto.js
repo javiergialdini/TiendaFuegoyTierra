@@ -99,7 +99,6 @@ export const AltaProducto = () => {
 
                 })
                 .finally((url) => {
-                    console.log(values)
                     const productosRef = collection(db, 'productos')
                     addDoc(productosRef, values)
                         .then((doc) => {
