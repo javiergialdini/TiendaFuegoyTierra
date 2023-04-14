@@ -3,6 +3,7 @@ import { CartContext } from '../../context/CartContext'
 import { Navigate, Link } from 'react-router-dom'
 import { collection, addDoc, getDocs, writeBatch, query, where, documentId   } from 'firebase/firestore';
 import { db} from '../../firebase/config'
+import Swal from 'sweetalert2'
 
 export const Checkout = () => {
     const { cart, totalCompra, vaciarCarrito } = useContext(CartContext)
@@ -26,15 +27,15 @@ export const Checkout = () => {
         e.preventDefault()
         // validaciones
         if(values.nombre.length < 1){
-            alert("Nombre inválido")
+            Swal.fire('Nombre inválido','','error')
             return
         }
         if(values.direccion.length < 1){
-            alert("Direccion inválido")
+            Swal.fire('Direccion inválido','','error')
             return
         }
         if(values.email.length < 1){
-            alert("Email inválido")
+            Swal.fire('Email inválido','','error')
             return
         }
 

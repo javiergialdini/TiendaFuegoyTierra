@@ -12,14 +12,17 @@ import { Button } from '@mui/material';
 
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Swal from 'sweetalert2'
 
 import { collection, addDoc } from 'firebase/firestore';
 import { db, storageDB } from '../../firebase/config'
 import { ref, uploadBytes, getDownloadURL  } from 'firebase/storage'
 import { LoginContext } from '../../context/LoginContext'
-import { Link } from 'react-router-dom'
+import { Link,  } from 'react-router-dom'
 
 export const AltaProducto = () => {
+    //const history = useHistory();
+
     const [guardado, setGuardado] = useState(false)
     const [guardando, setGuardando] = useState(false)
 
@@ -51,15 +54,11 @@ export const AltaProducto = () => {
     const handleArrayDescription = (e) => {
         // setArrayDesc(arrayDescription.push(e.target.value))
         setArrayDesc([...arrayDescription, e])
-        console.log(arrayDescription)
         //values.descriptions.push(e.target.value)
     }
 
     const handleQuitarDescription = (desc) => {
-        //console.log(desc)
         const newArray = arrayDescription.filter(item => item !== desc);
-        console.log(arrayDescription)
-        //console.log(arrayDescription)
         // Actualizar el estado arrayDescription con el nuevo array filtrado
         setArrayDesc(newArray);
     }
@@ -67,8 +66,6 @@ export const AltaProducto = () => {
     const handleChangeCategory = (e) => {
         setCategory(e.target.value);
         values.category = e.target.value
-        //console.log(values)
-        //console.log(category)
     }
 
 
@@ -82,6 +79,32 @@ export const AltaProducto = () => {
 
 
 	const handleSubmit = () => {
+
+        if(values.category.length < 1){
+            Swal.fire('Categoría requerida','','error')
+            return
+        }
+        if(values.name.length < 1){
+            Swal.fire('Nombre requerido','','error')
+            return
+        }
+        if(arrayDescription.length < 1){
+            Swal.fire('Debe cargar al menos una descripción','','error')
+            return
+        }
+        if(values.price < 1){
+            Swal.fire('El precio es requerido','','error')
+            return
+        }
+        if(values.stock < 1){
+            Swal.fire('Stock requerido','','error')
+            return
+        }
+        if(!selectedFile){
+            Swal.fire('Imagen requerida','','error')
+            return
+        }
+
         setGuardando(true)
         const storageRef = ref(storageDB, 'Productos/'+selectedFile.name)
 
@@ -91,12 +114,7 @@ export const AltaProducto = () => {
                 getDownloadURL(storageRef)
                 .then((url) => {
                     values.img=url
-                    console.log(values.img)
-                    console.log(url)
-                    console.log(arrayDescription)
-
                     values.descriptions= arrayDescription
-
                 })
                 .finally((url) => {
                     const productosRef = collection(db, 'productos')
@@ -104,7 +122,19 @@ export const AltaProducto = () => {
                         .then((doc) => {
                             setGuardando(false)
                             setGuardado(true)
-                            alert("GUARDADO")
+                            setValues({
+                                name: '',
+                                descriptions: [],
+                                price: 0,
+                                img: '',
+                                stock:0
+                            })
+
+                            Swal.fire(
+                            'Cargado',
+                            'El producto se cargó correctamente. key: ' + doc._key.path.segments[1],
+                            'success',
+                            )
                         })
                 })
             })
@@ -212,12 +242,8 @@ export const AltaProducto = () => {
                             )
                             : (
                             <div style={{ display:'flex', }}>
-                                <Link style={{ textDecoration: 'none', color: 'inherit', marginRight: '15px'}} to="/AltaProducto"><Button variant="outlined" color="success" name="file" >VOLVER</Button></Link>
-                                { !guardando
-                                    ?   <Box><CircularProgress variant="determinate" value={100} color="success"/></Box>
-                                    :   <></>
-                                }
-                                </div>
+                                <Link style={{ textDecoration: 'none', color: 'inherit', marginRight: '15px'}} to="/"><Button variant="outlined" color="success" name="file" >Menú principal</Button></Link>
+                            </div>
                             )
                         }
                     </div>
