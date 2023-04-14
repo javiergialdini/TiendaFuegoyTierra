@@ -38,7 +38,7 @@ export const ItemDetail = ({item}) => {
             <div>
                 <Grid justifyContent="center" container spacing={10} style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <Grid item>
-                        <img src={item.img} alt={item.name} style={{ width: '440px', height: '440px' }} />
+                        <img src={item.img} alt={item.name} style={{ width: '440px', height: '440px', objectFit: 'contain' }} />
                     </Grid>
                     <Grid item xs={12} sm container>
                         <Grid item xs container direction="column" spacing={2}>
