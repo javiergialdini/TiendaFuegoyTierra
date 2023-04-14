@@ -48,31 +48,48 @@ export const ItemDetail = ({item}) => {
                             <Typography component="div" style={{ paddingTop: '20px', marginBottom: '50px' }} variant="body2">
                                 { item.descriptions.map((description, index) => (<ItemDescription key={'ItemDetail'+index} description={description}/>))}
                             </Typography>
-                            {
-                                isInCart(item.id)
-                                ?   <Link
-                                        to="/cart"
-                                        style={{
-                                            textDecoration: 'none',
-                                            variant:'h6',
-                                            color: 'inherit',
-                                            mr: 2,
-                                            display: { xs: 'flex', md: 'flex' }}}>
-                                        <Button
-                                            style={{marginTop: "20px"}}
-                                            variant="outlined"
-                                            color="success">Ver mi compra
-                                        </Button>
-                                    </Link>
+                            <>
+                            { item.stock !== 0
+                            ?   <>{
+                                    isInCart(item.id)
+                                    ?   <Link
+                                            to="/cart"
+                                            style={{
+                                                textDecoration: 'none',
+                                                variant:'h6',
+                                                color: 'inherit',
+                                                mr: 2,
+                                                display: { xs: 'flex', md: 'flex' }}}>
+                                            <Button
+                                                style={{marginTop: "20px"}}
+                                                variant="outlined"
+                                                color="success">Ver mi compra
+                                            </Button>
+                                        </Link>
 
-                                :   <ItemCount
-                                        max={item.stock}
-                                        cantidad={cantidad}
-                                        setCantidad={setCantidad}
-                                        handleAgregar={handleAgregar}
-                                    />
+                                    :   <>
+                                            <ItemCount
+                                                max={item.stock}
+                                                cantidad={cantidad}
+                                                setCantidad={setCantidad}
+                                                handleAgregar={handleAgregar}
+                                            />
+                                            <>
+                                            {
+                                                item.stock < 5
+                                                    ? (
+                                                        item.stock === 1
+                                                        ? <Typography variant="h8"> Queda solo {item.stock} producto</Typography>
+                                                        : <Typography variant="h8"> Quedan solo {item.stock} productos</Typography>
+                                                    )
+                                                    : <></>
+                                            }
+                                            </>
+                                        </>
+                                }</>
+                            : <Typography variant="h8">No disponible</Typography>
                             }
-
+                            </>
                             <Stack style={{ paddingTop: '20px' }} spacing={2} direction="row">
                                 <Button onClick={handleVolver} variant="outlined" color="error">Volver</Button>
                             </Stack>
@@ -81,11 +98,6 @@ export const ItemDetail = ({item}) => {
                     </Grid>
                 </Grid>
             </div>
-            {/* <ItemCount
-                max={item.stocks.length}
-                cantidad={cantidad}
-                setCantidad={setCantidad}
-            /> */}
         </div>
     )
 }

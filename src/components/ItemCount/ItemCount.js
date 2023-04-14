@@ -28,7 +28,7 @@ export const ItemCount = ( {max, cantidad, setCantidad, handleAgregar} ) => {
                 </Grid>
             </Grid>
             <Button
-            style={{marginTop: "20px"}}
+            style={{marginTop: "20px", marginBottom: '10px'}}
             variant="outlined"
             color="success"
             onClick={handleAgregar}>Agregar al carrito</Button>

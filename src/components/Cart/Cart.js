@@ -85,7 +85,7 @@ export const Cart = () => {
                     {
                         cart.map((item, index) => (
                             <>
-                                <ListItem
+                                <ListItem key={"ListItem"+index}
                                 secondaryAction={
                                     <IconButton edge="end" aria-label="delete">
                                         <DeleteIcon style={{color: 'red'}} onClick={() => eliminarDelCarrito(item.id)}/>

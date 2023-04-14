@@ -22,19 +22,28 @@ export const Item = ( {item} ) => {
                             image={item.img}
                             alt={item.name}
                         />
-                        <CardContent style={{ height: '150px', width: '350px'}}>
-                        <div>
-                            <div style={{heigh: '50%'}}>
-                                <Typography gutterBottom variant="h5" component="div" sx={{color: 'black', height: '30px'}}>
-                                    $ {item.price}
-                                </Typography>
+                        <CardContent style={{ height: '150px', width: '350px',}}>
+                            <div>
+                                <div style={{heigh: '50%', display: 'flex', justifyContent: 'space-between'}}>
+                                    <Typography gutterBottom variant="h5" component="div" sx={{color: 'black', height: '30px'}}>
+                                        $ {item.price}
+                                    </Typography>
+                                    {
+                                        item.stock === 0
+                                        ?   <div >
+                                                <Typography variant="p" component="div" style={{color: 'red', marginLeft: '10px', fontSize: '15px'}}>
+                                                    No disponible
+                                                </Typography>
+                                            </div>
+                                        :<></>
+                                    }
+                                </div>
+                                <div style={{heigh: '50%',}}>
+                                    <Typography gutterBottom variant="body1" component="div" sx={{color: 'black', fontWeight: 'bold'}}>
+                                        {item.name}
+                                    </Typography>
+                                </div>
                             </div>
-                            <div style={{heigh: '50%'}}>
-                                <Typography gutterBottom variant="body1" component="div" sx={{color: 'black', fontWeight: 'bold'}}>
-                                    {item.name}
-                                </Typography>
-                            </div>
-                        </div>
                         </CardContent>
                     </CardActionArea>
                 </Link>
