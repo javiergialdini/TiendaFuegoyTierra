@@ -4,8 +4,10 @@ import { Navigate, Link } from 'react-router-dom'
 import { collection, addDoc, getDocs, writeBatch, query, where, documentId   } from 'firebase/firestore';
 import { db} from '../../firebase/config'
 import Swal from 'sweetalert2'
+import { LoginContext } from '../../context/LoginContext'
 
 export const Checkout = () => {
+    const { user } = useContext(LoginContext)
     const { cart, totalCompra, vaciarCarrito } = useContext(CartContext)
 
     const [values, setValues] = useState({
@@ -94,6 +96,15 @@ export const Checkout = () => {
 
     if(cart.length === 0) {
         return <Navigate to='/'/>
+    }
+
+    if(!user.logged){
+        return(
+            <div style={{marginTop: '100px'}}>
+                <h2>Por favor inicie sesión para terminar la compra</h2>
+                <Link to="/login">Iniciar sesión</Link>
+            </div>
+        )
     }
 
     return(

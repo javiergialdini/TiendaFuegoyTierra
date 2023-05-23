@@ -62,7 +62,13 @@ export const NavBar = () => {
         onClose={handleMenuClose}
         >
         <MenuItem onClick={handleMenuClose}>{user.email}</MenuItem>
-        <MenuItem onClick={logOut}>Cerrar sesión</MenuItem>
+        {user.logged
+            ?<MenuItem onClick={logOut}>Cerrar sesión</MenuItem>
+            :<Link style={{
+                color: 'inherit',
+                textDecoration: 'none'
+            }} to="/login"><MenuItem onClick={logOut}>Iniciar sesión</MenuItem></Link>
+        }
         </Menu>
     );
 

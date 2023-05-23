@@ -1,6 +1,7 @@
 import { CartContext } from '../../context/CartContext';
 import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { LoginContext } from '../../context/LoginContext'
 
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -15,7 +16,6 @@ import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
-
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
@@ -24,6 +24,7 @@ export const Cart = () => {
     const [secondary, setSecondary] = useState(false);
 
     const { cart, totalCompra, vaciarCarrito, eliminarDelCarrito } = useContext(CartContext)
+    const { user } = useContext(LoginContext)
 
     if(cart.length === 0){
         return(
@@ -74,6 +75,8 @@ export const Cart = () => {
                     <Typography sx={{ mt: 6, mb: 2, ml: 4}}variant="h4" component="div">
                         Tu compra
                     </Typography>
+                { user.logged
+                    ?
                     <Link to="/checkout" style={{color: 'inherit', textDecoration: 'none'}}>
                         <Stack direction="row" spacing={2}>
                             <Button variant="outlined" color="success" sx={{ ml: 4, mb:2}}>
@@ -81,6 +84,15 @@ export const Cart = () => {
                             </Button>
                         </Stack>
                     </Link>
+                    :
+                    <Link to="/login" style={{color: 'inherit', textDecoration: 'none'}}>
+                        <Stack direction="row" spacing={2}>
+                            <Button variant="outlined" color="success" sx={{ ml: 4, mb:2}}>
+                                Iniciar sesión
+                            </Button>
+                        </Stack>
+                    </Link>
+                }
                     <List dense={dense}>
                     {
                         cart.map((item, index) => (

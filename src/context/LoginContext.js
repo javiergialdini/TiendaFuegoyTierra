@@ -2,9 +2,7 @@ import { createContext, useState, useEffect } from "react"
 import { auth, db } from '../firebase/config'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { setDoc, doc, getDoc } from 'firebase/firestore';
-
 export const LoginContext = createContext()
-
 
 export const LoginProvider = ({children}) => {
     const[user, setUser] = useState({
