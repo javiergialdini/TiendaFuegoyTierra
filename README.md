@@ -1,3 +1,7 @@
+# REACT APP
+## Vercel deploiment (https://pre-entrega2-gialdini.vercel.app/)
+## Se utiizaron coponentes de (https://mui.com/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
