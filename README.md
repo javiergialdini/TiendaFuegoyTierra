@@ -1,6 +1,6 @@
 # REACT APP
 ## Vercel deployment https://pre-entrega2-gialdini.vercel.app/
-## Se utiizaron coponentes de https://mui.com/
+## https://mui.com/
 
 # Getting Started with Create React App
 
